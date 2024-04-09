@@ -18,22 +18,26 @@ public class DataProcessingService {
         return repository;
     }
 
+    // добавления пользователя в список
     public void addUserToList(User user) {
         repository.getUsers().add(user);
     }
 
+    // сортировка пользователей по возрасту
     public List<User> sortUsersByAge(List<User> users) {
         return users.stream()
                 .sorted(Comparator.comparing(User::getAge))
                 .collect(Collectors.toList());
     }
 
+    // исключение пользователей младше заданного возраста из списка
     public List<User> filterUsersByAge(List<User> users, int age) {
         return users.stream()
                 .filter(user -> user.getAge() > age)
                 .collect(Collectors.toList());
     }
 
+    // средний возраст всех пользователей
     public double calculateAverageAge(List<User> users) {
         return users.stream()
                 .mapToInt(User::getAge)
