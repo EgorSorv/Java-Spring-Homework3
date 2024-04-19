@@ -13,11 +13,13 @@ public class UserController {
     @Autowired
     private RegistrationService service;
 
+    // вывод всех пользователей
     @GetMapping
     public List<User> userList() {
         return service.getDataProcessingService().getRepository().getUsers();
     }
 
+    // добавление пользователя POST запросом
     @PostMapping("/body")
     public String userAddFromBody(@RequestBody User user) {
         service.getDataProcessingService().getRepository().getUsers().add(user);
